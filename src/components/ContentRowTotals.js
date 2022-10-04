@@ -13,7 +13,7 @@ function ContentRowTotals(){
         setCountproducts(data.meta.count)
       }
       getCountProducts()
-    })
+    }, [])
     
     const [countUsers, setCountUsers] = useState(["0"]);
 
@@ -24,7 +24,7 @@ function ContentRowTotals(){
         setCountUsers(data.count)
       }
       getCountUsers()
-    })
+    }, [])
 
     const [countBrands, setCountBrands] = useState(["0"]);
 
@@ -35,7 +35,7 @@ function ContentRowTotals(){
         setCountBrands(data.count)
       }
       getCountBrands()
-    })
+    }, [])
 
     let cartProps = [{
         title: 'Total Products',

@@ -13,7 +13,7 @@ function  CategoriesInDb() {
         setCategories(data.brands)
       }
       fetchCategories()
-    })
+    }, [])
 
 
   return (
@@ -21,7 +21,7 @@ function  CategoriesInDb() {
       <div className="card shadow mb-4">
         <div className="card-header py-3">
           <h5 className="m-0 font-weight-bold text-gray-800">
-            Categories in Data Base
+            Brands in Data Base
           </h5>
         </div>
 

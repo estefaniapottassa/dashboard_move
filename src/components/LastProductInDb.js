@@ -14,8 +14,7 @@ function LastProductInDb(){
         setLastProduct(data.productsApi[data.productsApi.length - 1])
       }
       getLastProduct()
-    })
-
+    }, [])
 
     return(
         <div className="col-lg-6 mb-4">
