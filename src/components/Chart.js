@@ -2,33 +2,15 @@ import React from 'react';
 import ChartRow from './ChartRow';
 import { useState, useEffect } from "react";
 
-// let tableRowsData = [
-//     {
-//         Title: 'Billy Elliot ',
-//         Length: '123',
-//         Rating: '5',
-//         Categories: ['Drama','Comedia'],
-//         Awards: 2
-//     },
-//     {
-//         Title: 'Alicia en el país de las maravillas',
-//         Length: '142',
-//         Rating: '4.8',
-//         Categories: ['Drama','Acción','Comedia'],
-//         Awards: 3
-//     },
-    
-// ]
-
 function Chart (){
 
     const [tableRowsData, setTableRowsData] = useState(["algo"]);
 
     useEffect(() => {
-      fetch("http://localhost:3000/api/products", {mode: 'no-cors'})
+      fetch("http://localhost:3000/api/products")
         .then((res) => res.json())
         .then((data) => {
-            setTableRowsData(data.products)
+            setTableRowsData(data.productsApi)
         })
         .catch((err) => console.log(err));
     }, []); // como segundo parametro le paso un array vacio para que se ejecute solo una vez

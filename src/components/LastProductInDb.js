@@ -1,7 +1,22 @@
 import React from 'react';
 import imagenFondo from '../assets/images/zapatillas_nike_AirMax90.JPG'
+import { useState, useEffect } from "react";
+
 
 function LastProductInDb(){
+
+    const [lastProduct, setLastProduct] = useState(["0"]);
+
+    useEffect(() => {
+      async function getLastProduct() {
+        const response = await fetch('http://localhost:3000/api/products');
+        const data = await response.json();
+        setLastProduct(data.productsApi[data.productsApi.length - 1])
+      }
+      getLastProduct()
+    })
+
+
     return(
         <div className="col-lg-6 mb-4">
             <div className="card shadow mb-4">
@@ -12,7 +27,8 @@ function LastProductInDb(){
                     <div className="text-center">
                         <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={imagenFondo} alt=" Star Wars - Mandalorian "/>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa citationem ratione aperiam voluptatum non corporis ratione aperiam voluptatum quae dolorem culpa ratione aperiam voluptatum?</p>
+                    <h1>{lastProduct.name}</h1>
+                    <p>{lastProduct.description}</p>
                     <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">View product detail</a>
                 </div>
             </div>

@@ -1,22 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-//const categories = ['running', 'tenis'] 
 
 function  CategoriesInDb() {
 
   const [categories, setCategories] = useState(["prueba"]);
 
-  useEffect(() => {
-   
-    fetch("http://localhost:3000/api/products",  {'mode': 'no-cors'})
-      .then((res) => res.json())
-      .then((data) => {
-        setCategories(data.products)
-      })
-      .catch((err) => console.log(err));
-  }, []); // como segundo parametro le paso un array vacio para que se ejecute solo una vez
-  
+    useEffect(() => {
+      async function fetchCategories() {
+        const response = await fetch('http://localhost:3000/api/products/brands');
+        const data = await response.json();
+        setCategories(data.brands)
+      }
+      fetchCategories()
+    })
+
 
   return (
     <div className="col-lg-6 mb-4">
@@ -32,7 +30,7 @@ function  CategoriesInDb() {
               {categories.map((oneCategory, i) => 
                   <div className="col-lg-6 mb-4"  key={i}>
                     <div className="card bg-info text-white shadow">
-                      <div className="card-body"> {oneCategory} </div>
+                      <div className="card-body"> {oneCategory.name} </div>
                     </div>
                   </div>
               )}
