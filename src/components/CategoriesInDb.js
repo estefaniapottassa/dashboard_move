@@ -30,7 +30,8 @@ function  CategoriesInDb() {
               {categories.map((oneCategory, i) => 
                   <div className="col-lg-6 mb-4"  key={i}>
                     <div className="card bg-info text-white shadow">
-                      <div className="card-body"> {oneCategory.name} </div>
+                      <div className="card-body"> {oneCategory.name}: {oneCategory.id}  </div>
+
                     </div>
                   </div>
               )}
