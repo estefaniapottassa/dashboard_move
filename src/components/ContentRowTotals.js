@@ -10,7 +10,7 @@ function ContentRowTotals(){
       async function getCountProducts() {
         const response = await fetch('http://localhost:3000/api/products');
         const data = await response.json();
-        setCountproducts(data.meta.count)
+        setCountproducts(data.count)
       }
       getCountProducts()
     }, [])
